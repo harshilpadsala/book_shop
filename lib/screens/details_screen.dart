@@ -1,5 +1,6 @@
 import 'package:bookshop/model/book_data.dart';
 import 'package:bookshop/screens/favourite_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,15 +23,32 @@ class BookDetailsScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(currentBook.bookName),
-          Text(currentBook.authorName),
-          FlatButton(
-            child: Text('Jump to Favourites'),
-            onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                return FavouriteScreen();
-              }));
-            },
+          Image.network(currentBook.imageUrl,
+          height: 200,
+          width: 150,),
+          Center(
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: '${currentBook.bookName}\n',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                      text: currentBook.authorName,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.grey,
+                      ),
+                  )
+                ]
+              ),
+            ),
           )
         ],
       ),
