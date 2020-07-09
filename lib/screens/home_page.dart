@@ -1,4 +1,5 @@
 import 'package:bookshop/model/book_data.dart';
+import 'package:bookshop/screens/shopping_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:bookshop/widgets/custom_grid_tile.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +49,10 @@ class _HomePageState extends State<HomePage> {
                 ),
               ];
             },
-          )
+          ),
+          IconButton(icon: Icon(Icons.shopping_cart), onPressed:(){
+            Navigator.pushNamed(context, ShoppingCart.id);
+          })
         ],
         ),
       body: Consumer<BookData>(
